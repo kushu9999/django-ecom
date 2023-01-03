@@ -140,7 +140,8 @@
                             {% comment %} <del class="price-old">$1980</del> {% endcomment %}
                         </div> <!-- price-wrap.// -->
                     </div>
-                    <a href="#" class="btn btn-block btn-success">Added to cart </a>
+                    <a href="{{product.get_url}}" class="btn btn-block btn-primary">View Details </a>
+                    {% comment %} <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-primary">Add to cart </a> {% endcomment %}
                 </figcaption>
             </figure>
         </div> <!-- col.// -->
