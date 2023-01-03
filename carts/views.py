@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from store.models import Product
 from carts.models import Cart, CartItem
 from django.http import HttpResponse
- 
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 # we will get session id uding requests if session_key not found we will create a new session
@@ -65,7 +65,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
             total += (cart_item.product.price * cart_item.quantity)
             quantity = cart_item.quantity
 
-    except objectNotExist:
+    except ObjectDoesNotExist:
         pass # just ignore
 
     context = {'total':total, 'quantity':quantity, 'cart_items':cart_items, 'tax':round(total*0.18, 2), 'grand_total':round(total*1.18,2)}
